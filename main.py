@@ -5,6 +5,7 @@ from database import engine
 from database import SessionLocal
 from models import Base
 from models import Product
+from fastapi.responses import FileResponse
 
 
 app = FastAPI()
@@ -31,10 +32,7 @@ class ProductCreate(BaseModel):
 
 @app.get("/")
 def home():
-
-    return {
-        "message": "working"
-    }
+    return FileResponse("index.html")
 
 
 @app.post("/products")
